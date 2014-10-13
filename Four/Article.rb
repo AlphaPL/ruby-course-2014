@@ -26,6 +26,9 @@ class Article
 	end
 
 	def shortened_to(limit)
+		if limit < 0
+			raise "Error! Negative argument"
+		end
 		@content[0,limit-3]+"..."
 	end
 
