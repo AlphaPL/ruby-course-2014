@@ -11,11 +11,9 @@ class MockArticle < Article
   @likes = random_number
  end
 
- private
-
  def get_random_words(n)
   words = []
-  n.times { words += [WORD_LIST[random_number]] }
+  n.times do  words += [ WORD_LIST[ random_number ] ] end
   words
  end
 
@@ -34,12 +32,11 @@ class MockArticle < Article
 
  def generate_article
   article = ""
-  rand(10).times { article += generate_sentence }
+  rand(10).times do article += generate_sentence end 
   article
  end
 
  def random_number
   rand(100)
  end
-
 end
