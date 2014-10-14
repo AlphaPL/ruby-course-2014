@@ -7,21 +7,19 @@ class ArticleManager
 	end
 	
 	def add(article)
-		if article.instance_of? Article
+		if article.instance_of? Article or article.class.ancestors.include? Article
 			@arrticles += [article]
-			self
-		else
-			raise "Not an article!"
+			return self
 		end
+		raise "Not an article!"
 	end
 
 	def delete(article)
-		if article.instance_of? Article
+		if article.instance_of? Article or article.class.ancestors.include? Article
 			@arrticles += [article]
-			self
-		else
-			raise "Not an article!"
+			return self
 		end
+		raise "Not an article!"
 	end
 
 	def worst_articles
@@ -59,6 +57,16 @@ class ArticleManager
 			sumOfVotes += x.votes
 		end
 		sumOfVotes
+	end
+
+	def to_s
+		list_of_articles = ""
+		i=1
+		@arrticles.each do |x| 
+			list_of_articles += i.to_s + "." + x.title + " " + x.shortened_to(10)+"\n"
+			i = i + 1
+		end
+		list_of_articles
 	end
 
 	def include?(pattern)
