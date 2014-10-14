@@ -1,7 +1,7 @@
 require './Article.rb'
 
 class ArticleManager
- attr_accessor :arrticles
+ @arrticles
  def initialize()
   @arrticles = []
  end
@@ -30,12 +30,12 @@ class ArticleManager
  
  end
 
-        def best_articles()
+ def best_articles()
   if @arrticles.length == 0
    raise "No articles in the manager!"
   end
-         @arrticles.sort_by {|x| x.positive_votes*-1 }
-        end
+  @arrticles.sort_by {|x| x.positive_votes*-1 }
+ end
 
  def best_article
   best_articles()[0]
@@ -58,8 +58,7 @@ class ArticleManager
   list_of_articles = ""
   i=1
   @arrticles.each do|x| 
-   list_of_articles += i.to_s + "." + x.title + " " + x.shortened_to(10)+"\n"
-   i = i + 1
+   list_of_articles += "- #{x.title} #{x.shortened_to(10)}"
   end
   list_of_articles
  end
