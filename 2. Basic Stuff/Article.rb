@@ -45,6 +45,12 @@ class Article
 
 end
 
+art1 = Article.new("The best article in the world", "This article is simply astounding"\
+                                                  ", no other compares to This astounding article", "Arkadiusz Krawczyk")
+art2 = Article.new("The best article in the world", "This article is simply astounding"\
+                                                  ", no other compares to This astounding article", "Arkadiusz Krawczyk")
+art3 = Article.new("The best article in the world", "This article is simply astounding"\
+                                                  ", no other compares to This astounding article", "Arkadiusz Krawczyk")
 
  
 

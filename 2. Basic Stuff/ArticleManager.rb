@@ -6,35 +6,54 @@ class ArticleManager
 		@arrticles = []
 	end
 	
-	def best_articles()
-		if @arrticles != []
-			@arrticles.sort! do |x|
-				x.positive_votes
-			end
+	def add(article)
+		if article.instance_of? Article
+			@arrticles += [article]
+			self
 		else
-			[nil]
+			raise "Not an article!"
 		end
 	end
 
-        def worst_articles()
-		if @arrticles != []
-                	@arrticles.sort! do |x|
-                        	x.positive_votes*-1
-			end
+	def delete(article)
+		if article.instance_of? Article
+			@arrticles += [article]
+			self
 		else
-			[nil]
-                end
+			raise "Not an article!"
+		end
+	end
+
+	def worst_articles
+		if @arrticles.length == 0
+			raise "No articles in the manager!"
+		end
+		@arrticles.sort_by do |x|
+			x.positive_votes
+		end
+	end
+
+        def best_articles()
+		if @arrticles.length == 0
+			raise "No articles in the manager!"
+		end
+        	@arrticles.sort_by do |x|
+                	x.positive_votes*-1
+		end     
         end
 
-	def best_article()
+	def best_article
 		best_articles()[0]
 	end
 
-	def worst_article()
+	def worst_article
 		worst_articles()[0]
 	end
 
-	def votes()
+	def votes
+		if @arrticles.length == 0
+			raise "No articles in the manager!"
+		end
 		sumOfVotes = 0
 		arrticles.each do |x|
 			sumOfVotes += x.votes
@@ -43,12 +62,10 @@ class ArticleManager
 	end
 
 	def include?(pattern)
+		if @arrticles.length == 0
+			raise "No articles in the manager!"
+		end
 		@arrticles.delete_if {|x| !x.include?(pattern)} 
 	end
 
-end
-
-if __FILE__ == $0
-	artManag=ArticleManager.new()
-	puts artManag.best_article()
 end
