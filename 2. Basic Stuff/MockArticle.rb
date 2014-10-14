@@ -40,7 +40,3 @@ class MockArticle < Article
 		rand(100)
 	end
 end
-
-artMan = ArticleManager.new()
-10.times do artMan.add(MockArticle.new()) end
-print artMan.to_s
