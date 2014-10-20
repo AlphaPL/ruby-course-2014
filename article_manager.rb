@@ -20,7 +20,6 @@ class  ArticleManager
       raise "Not an article!"
     end
     @arrticles.delete(article)
-
   end
 
   def worst_articles
@@ -28,7 +27,6 @@ class  ArticleManager
       raise "No articles in the manager!"
     end
     @arrticles.sort_by { |x| x.positive_votes }
-  
   end
 
   def best_articles()
