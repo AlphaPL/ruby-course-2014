@@ -30,7 +30,7 @@ class Article
     if @content.length < limit-3
        @content
     else
-       @content[0,limit-4] + "..."
+       @content[0,limit-3] + "..."
     end
   end
 

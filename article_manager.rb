@@ -48,9 +48,7 @@ class  ArticleManager
     if @arrticles.length == 0
       raise "No articles in the manager!"
     end
-    sumOfVotes = 0
-    arrticles.each { |x| sumOfVotes += x.votes }
-    sumOfVotes
+    arrticles.inject(0, :+)
   end
 
   def to_s
