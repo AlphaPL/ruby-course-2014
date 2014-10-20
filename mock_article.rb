@@ -1,9 +1,9 @@
-require  './article.rb'
-require  './article_manager.rb'
+require_relative  './article.rb'
+require_relative  './article_manager.rb'
 
 class MockArticle < Article
 
-  WORD_LIST = File.read("randomWords.txt").split
+  WORD_LIST = File.read(File.dirname(__FILE__)+"/randomWords.txt").split
 
   def initialize
     super(generate_title,generate_article,generate_author)

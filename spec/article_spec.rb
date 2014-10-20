@@ -1,4 +1,4 @@
-require '../article.rb'
+require_relative '../article.rb'
 require "test/unit"
 
 class TestSimpleNumber < Test::Unit::TestCase

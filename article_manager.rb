@@ -1,4 +1,4 @@
-require  './article.rb'
+require_relative  './article.rb'
 
 class  ArticleManager
 
@@ -15,8 +15,8 @@ class  ArticleManager
   end
 
   def delete(article)
-    if article.respond_to?(:positive_votes) && article.respond_to?(:votes)  \
-          && article.respond_to?(:shortened_to) && article.respond_to?(:include?)
+    if !article.respond_to?(:positive_votes) && !article.respond_to?(:votes)  \
+          && !article.respond_to?(:shortened_to) && !article.respond_to?(:include?)
       raise "Not an article!"
     end
     @arrticles.delete(article)
@@ -48,7 +48,7 @@ class  ArticleManager
     if @arrticles.length == 0
       raise "No articles in the manager!"
     end
-    arrticles.inject(0, :+)
+    @arrticles.inject(0) {|sum, article| sum + article.votes}
   end
 
   def to_s
