@@ -1,25 +1,25 @@
-class  Article
+class Article
 
-  attr_reader  :title,:content,:author,:likes,:dislikes,:created_at
+  attr_reader  :title, :content, :author, :likes, :dislikes, :created_at
 
   def initialize(title, content, author = "")
-      @title, @content, @author = title, content, author
-      @likes = @dislikes = 0
+    @title, @content, @author = title, content, author
+    @likes = @dislikes = 0
   end
 
   def like!
     @likes += 1
   end
   
-  def  dislike!
+  def dislike!
     @dislikes += 1
   end
 
-  def  positive_votes
+  def positive_votes
     @likes - @dislikes
   end
 
-  def  votes
+  def votes
     @likes + @dislikes
   end
 
@@ -28,9 +28,10 @@ class  Article
       raise "Error! Negative argument"
     end
     if @content.length < limit-3
-      return @content
+       @content
+    else
+       @content[0,limit-4] + "..."
     end
-    @content[0,limit-4] + "..."
   end
 
   def include?(string)
