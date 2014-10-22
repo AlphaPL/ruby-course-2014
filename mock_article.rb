@@ -21,7 +21,7 @@ class MockArticle < Article
 
   def generate_author
     author = get_random_words(2)
-    "#{author[0].capitalize}  #{author[1].capitalize}"
+    "#{author[0].capitalize} #{author[1].capitalize}"
   end
 
   def generate_sentence
