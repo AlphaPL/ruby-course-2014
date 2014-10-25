@@ -3,11 +3,6 @@ require_relative '../mock_article.rb'
 require "test/unit"
 
 class TestSimpleNumber < Test::Unit::TestCase
- 
-  def test_i_cannot_add_a_non_article
-    artMan = ArticleManager.new
-    assert_raise(RuntimeError) { artMan.add(3) }
-  end
 
   def test_i_can_add_something_with_article_like_methods
     artMan = ArticleManager.new
@@ -55,7 +50,7 @@ class TestSimpleNumber < Test::Unit::TestCase
     art1 = Article.new("Tytul","Kontent","Autor")
     artMan.add(art1)
     artMan.delete(art1)
-    assert_raise(RuntimeError) { artMan.best_article }
+	assert_equal(artMan.best_articles,[],"Manager is not empty!")
   end
 
 end

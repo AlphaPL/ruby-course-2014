@@ -14,9 +14,7 @@ class MockArticle < Article
   private
 
   def get_random_words(n)
-    words = []
-    n.times { words += [WORD_LIST[random_number]] }
-    words
+    WORD_LIST.sample(n)
   end
 
   def generate_author

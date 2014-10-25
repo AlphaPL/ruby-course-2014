@@ -3,37 +3,23 @@ require_relative  './article.rb'
 class  ArticleManager
 
   def initialize()
-    @arrticles = []
+    @articles = []
   end
   
   def add(article)
-    if !article.respond_to?(:positive_votes) && !article.respond_to?(:votes)  \
-          && !article.respond_to?(:shortened_to) && !article.respond_to?(:include?)
-      raise "Not  an  article!"
-    end
-    @arrticles += [article]
+    @articles += [article]
   end
 
   def delete(article)
-    if !article.respond_to?(:positive_votes) && !article.respond_to?(:votes)  \
-          && !article.respond_to?(:shortened_to) && !article.respond_to?(:include?)
-      raise "Not an article!"
-    end
-    @arrticles.delete(article)
+    @articles.delete(article)
   end
 
   def worst_articles
-    if @arrticles.length == 0
-      raise "No articles in the manager!"
-    end
-    @arrticles.sort_by { |x| x.positive_votes }
+    @articles.sort_by { |x| x.positive_votes }
   end
 
   def best_articles()
-    if @arrticles.length == 0
-      raise "No articles in the manager!"
-    end
-    @arrticles.sort_by {|x| x.positive_votes*-1 }
+    @articles.sort_by {|x| x.positive_votes*-1 }
   end
 
   def best_article
@@ -45,23 +31,17 @@ class  ArticleManager
   end
 
   def votes
-    if @arrticles.length == 0
-      raise "No articles in the manager!"
-    end
-    @arrticles.inject(0) {|sum, article| sum + article.votes}
+    @articles.inject(0) {|sum, article| sum + article.votes}
   end
 
   def to_s
     list_of_articles = ""
-    @arrticles.each { |x| list_of_articles += "-  #{x.title} #{x.shortened_to(10)}" }
+    @articles.each { |x| list_of_articles += "-  #{x.title} #{x.shortened_to(10)}" }
     list_of_articles
   end
 
   def include?(pattern)
-    if @arrticles.length == 0
-      raise "No  articles in the manager!"
-    end
-    @arrticles.delete_if {|x| !x.include?(pattern)} 
+    @articles.delete_if {|x| !x.include?(pattern)} 
   end
 
 end
