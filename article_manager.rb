@@ -23,11 +23,11 @@ class  ArticleManager
   end
 
   def best_article
-    best_articles()[0]
+    best_articles().first
   end
 
   def worst_article
-    worst_articles()[0]
+    worst_articles().first
   end
 
   def votes
