@@ -1,7 +1,7 @@
 require_relative '../mock_article.rb'
 require "test/unit"
 
-class TestSimpleNumber < Test::Unit::TestCase
+class TestsMockArticle < Test::Unit::TestCase
  
   def test_mock_article_generates_title_author_content_according_to_rules
     10.times do
