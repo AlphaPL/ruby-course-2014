@@ -7,7 +7,7 @@ class  ArticleManager
   end
   
   def add(article)
-    @articles += [article]
+    @articles << article
   end
 
   def delete(article)
