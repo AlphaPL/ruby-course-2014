@@ -1,5 +1,3 @@
-require_relative  './mock_article.rb'
-
 class ArticleFilesystem
 
   def self.write(article)
@@ -24,6 +22,3 @@ class ArticleFilesystem
     article
   end
 end
-
-article = ArticleFilesystem.read("ahisar_syrinx.txt")
-ArticleFilesystem.write(article)
