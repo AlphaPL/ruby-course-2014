@@ -1,3 +1,5 @@
+require 'date'
+require 'stamp'
 class Article
 
   attr_reader  :title, :content, :author, :likes, :dislikes, :created_at
@@ -5,6 +7,7 @@ class Article
   def initialize(title, content, author = "")
     @title, @content, @author = title, content, author
     @likes = @dislikes = 0
+    @created_at = Time.now.to_date
   end
 
   def like!
@@ -45,5 +48,8 @@ class Article
   def unique_words
     words.uniq
   end
-
+  
+  def created_stamp
+    @created_at.stamp("Sunday, May 1, 2000")
+  end
 end

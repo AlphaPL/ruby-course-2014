@@ -1,6 +1,7 @@
 require_relative '../article.rb'
 require "test/unit"
-
+require 'date'
+require 'stamp'
 class TestArticle < Test::Unit::TestCase
  
   def setup
@@ -36,6 +37,10 @@ class TestArticle < Test::Unit::TestCase
   def test_words_and_unique_words_work_correctly
     assert_equal(["include","or","not","include"], @article.words)
     assert_equal(["include","or","not"], @article.unique_words)
+  end
+
+  def test_stamp
+    assert(@article.created_stamp == Time.now.to_date.stamp("Sunday, May 1, 2000"))
   end
 
 end
