@@ -11,6 +11,10 @@ class  ArticleManager
   def add(article)
     @articles << article
   end
+  
+  def concat(article_manager)
+    for article in article_manager.articles do add(article) end
+  end
 
   def delete(article)
     @articles.delete(article)
@@ -31,6 +35,10 @@ class  ArticleManager
   def worst_article
     worst_articles.first
   end
+  
+  def articles 
+    @articles
+  end
 
   def votes
     @articles.inject(0) {|sum, article| sum + article.votes}
@@ -38,7 +46,7 @@ class  ArticleManager
 
   def to_s
     list_of_articles = ""
-    @articles.each { |x| list_of_articles += "-  #{x.title} #{x.shortened_to(100)} \n" }
+    @articles.each { |x| list_of_articles += "- #{x.author}  #{x.title} #{x.shortened_to(100)} \n" }
     list_of_articles
   end
 
@@ -52,5 +60,9 @@ class  ArticleManager
         @articles << ArticleFilesystem.read("#{path}/#{item}")
       end
     end
+  end
+  
+  def save_articles
+    @articles.each { |article| ArticleFilesystem.write(article) }
   end
 end
